@@ -30,21 +30,70 @@ body, .container, .section, h1, h2, h3, h4, h5, h6, p, div, table, th, td, pre, 
     -ms-user-select: none;
     user-select: none;
 }
+
+/* Hide content when printing */
+@media print {
+    body * {
+        visibility: hidden;
+        display: none;
+    }
+    body:after {
+        content: "Printing is disabled for this document";
+        visibility: visible;
+        display: block;
+        position: absolute;
+        top: 30%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+    }
+    .container, .section, table, img, .sidebar {
+        display: none !important;
+    }
+}
 </style>
 <script>
 // Disable right-click context menu
 window.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
+
 // Disable common copy, cut, and paste keyboard shortcuts
 window.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'a')) {
         e.preventDefault();
     }
 });
+
 // Disable text selection via mouse
 window.addEventListener('selectstart', function(e) {
     e.preventDefault();
+});
+
+// Detect and block print attempts
+window.addEventListener('beforeprint', function(e) {
+    e.preventDefault();
+    alert('Printing is disabled for this document');
+    return false;
+});
+
+// Additional print detection
+var printWarning = function() {
+    alert('Printing is disabled for this document');
+    return false;
+};
+window.onbeforeprint = printWarning;
+window.onprint = printWarning;
+
+// Block Ctrl+P and Command+P
+window.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+        e.preventDefault();
+        alert('Printing is disabled for this document');
+        return false;
+    }
 });
 </script>
 </head>
@@ -133,23 +182,70 @@ window.addEventListener('selectstart', function(e) {
 <div class="section" id="point2">
     <h2>Point 2: State the aspects of AI that will be applied to the solution</h2>
     <div class="summary"><strong>Rubric:</strong> AI Aspects & Algorithm – Thorough explanation of AI techniques; strong justification for the chosen AI approach; clear data collection strategy; well-researched algorithms with justification.</div>
-    <h3>AI Techniques & Justification</h3>
+    <h3>2.1 AI Techniques Applied</h3>
     <ul>
-        <li>Feature extraction (MFCC, Chroma, Spectral Contrast) for audio signals</li>
-        <li>Classical ML models (RandomForest, SVM) for baseline</li>
-        <li>Deep learning models (CNN, CRNN, Transformer) for advanced performance</li>
-        <li>Justification: Deep models capture temporal and spectral patterns; classical models provide interpretability and quick baseline</li>
+        <li><strong>Speech Emotion Recognition (SER):</strong> The core task is to classify emotions from speech using audio signal processing and supervised learning.</li>
+        <li><strong>Feature Extraction:</strong>
+            <ul>
+                <li><strong>MFCC (Mel-Frequency Cepstral Coefficients):</strong> Captures timbral/textural features crucial for emotion.</li>
+                <li><strong>Chroma Features:</strong> Encodes pitch class profiles, useful for tonal/emotional cues.</li>
+                <li><strong>Spectral Contrast:</strong> Captures the relative difference between peaks and valleys in spectrum, aiding emotion discrimination.</li>
+                <li><strong>Spectrograms:</strong> Used as input to CNNs for spatial pattern recognition in audio.</li>
+            </ul>
+        </li>
+        <li><strong>Data Augmentation:</strong> Noise addition, pitch/speed shifts to increase data diversity and model robustness.</li>
     </ul>
-    <h3>Data Collection Strategy</h3>
+    <h3>2.2 Data Collection Strategy</h3>
     <ul>
-        <li>Datasets: RAVDESS, TESS, Kaggle, etc.</li>
-        <li>Download and extraction scripts included (see Data Used Reference)</li>
+        <li><strong>Primary Datasets:</strong>
+            <ul>
+                <li><strong>RAVDESS:</strong> Labeled emotional speech dataset.</li>
+                <li><strong>TESS:</strong> Female speech dataset with emotional labels.</li>
+                <li><strong>KaggleTestDataSet:</strong> Additional samples for diversity.</li>
+            </ul>
+        </li>
+        <li><strong>Data Handling:</strong>
+            <ul>
+                <li>Combine datasets for broader coverage.</li>
+                <li>Ensure balanced class distribution to avoid bias.</li>
+                <li>Augment data to address class imbalance and improve generalization.</li>
+            </ul>
+        </li>
+        <li><strong>Preprocessing:</strong> Silence removal, normalization, resampling for consistency.</li>
     </ul>
-    <h3>Algorithm Selection & Research</h3>
+    <h3>2.3 Algorithm Choices & Justification</h3>
     <ul>
-        <li>Algorithm choice based on literature and benchmarking on SER tasks</li>
-        <li>Justification for each model is included in the Advanced Addenda</li>
+        <li><strong>Classical ML Models:</strong>
+            <ul>
+                <li><strong>Random Forest, SVM:</strong> Serve as strong baselines; interpretable and fast to train.</li>
+            </ul>
+        </li>
+        <li><strong>Deep Learning Models:</strong>
+            <ul>
+                <li><strong>CNN:</strong> Extracts spatial features from spectrograms; effective for audio pattern recognition.</li>
+                <li><strong>LSTM:</strong> Captures temporal dependencies in speech, modeling emotion progression.</li>
+                <li><strong>CRNN (CNN + RNN):</strong> Combines spatial and temporal learning for improved accuracy.</li>
+                <li><strong>Attention/Transformer:</strong> Captures global context and long-range dependencies; state-of-the-art for sequence modeling.</li>
+            </ul>
+        </li>
+        <li><strong>Model Selection Rationale:</strong>
+            <ul>
+                <li>Start with interpretable classical models for benchmarking.</li>
+                <li>Progress to deep models to leverage large data and capture complex patterns.</li>
+                <li>Use cross-validation and metrics (accuracy, F1-score) to select the best model.</li>
+            </ul>
+        </li>
     </ul>
+    <h3>2.4 Justification for Chosen Approach</h3>
+    <ul>
+        <li><strong>Interpretability:</strong> Baseline models (Random Forest, SVM) provide insights into feature importance.</li>
+        <li><strong>Performance:</strong> Deep models (CNN, LSTM, CRNN, Transformer) are chosen for their proven success in SER literature and ability to handle complex, high-dimensional audio data.</li>
+        <li><strong>Scalability:</strong> Modular approach allows easy experimentation with new models and features.</li>
+        <li><strong>Robustness:</strong> Data augmentation and ensemble methods help mitigate overfitting and improve reliability.</li>
+    </ul>
+    <div class="summary">
+        <strong>Summary:</strong> The solution applies a layered approach: start simple, benchmark, then deploy advanced models for optimal results. All choices are justified by literature and project needs, and the data collection and preprocessing pipeline ensures high-quality, diverse training data.
+    </div>
 </div>
 <div class="section" id="point3">
     <h2>Point 3: State other technologies required to complete the solution</h2>
