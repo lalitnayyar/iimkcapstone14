@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Assignment – Section A: Technical Solution</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: #f8f9fa; color: #222; }
+        .container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 40px; }
+        h1, h2, h3, h4 { color: #2c3e50; }
+        h1 { border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+        th, td { border: 1px solid #bbb; padding: 10px 8px; text-align: left; }
+        th { background: #e3e7ea; }
+        tr:nth-child(even) { background: #f4f7fa; }
+        code, pre { background: #f4f4f4; border-radius: 4px; padding: 2px 6px; font-size: 15px; }
+        pre { padding: 15px; overflow-x: auto; }
+        .section { margin-bottom: 40px; }
+        .summary { background: #eaf6e9; border-left: 4px solid #27ae60; padding: 14px 20px; border-radius: 6px; margin: 24px 0; }
+        .diagram, .ascii-art { background: #f9f9f9; border: 1px dashed #bbb; border-radius: 6px; padding: 16px; margin: 18px 0; font-family: 'Consolas', 'Menlo', monospace; white-space: pre; }
+        .sidebar { float: right; width: 250px; background: #f3f6fa; padding: 18px; border-radius: 8px; margin-left: 30px; margin-bottom: 20px; }
+        ul, ol { margin: 16px 0 16px 24px; }
+        @media (max-width: 1000px) { .container { padding: 18px; } .sidebar { float: none; width: 100%; margin-left: 0; } }
+    </style>
+<style>
+/* Prevent text selection */
+body, .container, .section, h1, h2, h3, h4, h5, h6, p, div, table, th, td, pre, code, ul, ol, li {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+<script>
+// Disable right-click context menu
+window.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+// Disable common copy, cut, and paste keyboard shortcuts
+window.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'a')) {
+        e.preventDefault();
+    }
+});
+// Disable text selection via mouse
+window.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+});
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1>Capstone Assignment – Section A: Technical Solution</h1>
+
+<!-- Table of Contents -->
+<div class="section" style="margin-bottom:32px;">
+  <h2 style="margin-top:0;">Table of Contents</h2>
+  <ol>
+    <li><a href="#point1">Point 1: Develop the AI solution for the project idea selected in Capstone Project 1<br><span style='font-size:0.95em;color:#555;'>Rubric: AI Solution Roadmap & Project Plan – Clear, detailed roadmap with well-structured phases; includes a high-level project plan with key milestones, deliverables, and risk analysis.</span></a></li>
+    <li><a href="#point2">Point 2: State the aspects of AI that will be applied to the solution<br><span style='font-size:0.95em;color:#555;'>Rubric: AI Aspects & Algorithm – Thorough explanation of AI techniques; strong justification for the chosen AI approach; clear data collection strategy; well-researched algorithms with justification.</span></a></li>
+    <li><a href="#point3">Point 3: State other technologies required to complete the solution<br><span style='font-size:0.95em;color:#555;'>Rubric: Other Technologies & Infrastructure – Clearly states required infrastructure, acquisition strategy, build vs. buy decision, integration plan, and team structure; strong justifications.</span></a></li>
+    <li><a href="#point4">Point 4: Provide a visualisation of the solution<br><span style='font-size:0.95em;color:#555;'>Rubric: Solution visualisation (Actors, Diagrams, State transitions) – Detailed visualisation with clearly defined actors, their roles, activity diagrams, and critical state transitions; diagrams are well-structured.</span></a></li>
+    <li><a href="#point5">Point 5: Create a Minimum Viable Product (MVP) on paper<br><span style='font-size:0.95em;color:#555;'>Rubric: Minimum Viable Product (MVP) Design : Expected Output : Well-structured MVP with detailed UI, workflows, and backend interactions; clear and practical implementation plan.</span></a></li>
+    <li><a href="#dataref">Data Used Reference</a></li>
+    <li><a href="#addenda">Advanced Addenda</a></li>
+  </ol>
+</div>
+        <div class="sidebar">
+            <strong>Student:</strong> Lalit Nayyar<br>
+            <strong>Email:</strong> lalitnayyar@gmail.com<br>
+            <strong>Week:</strong> 14<br>
+            <strong>Section:</strong> A<br>
+            <strong>Course:</strong> IIMK's Professional Certificate in Data Science and Artificial Intelligence for Managers
+        </div>
+        <div class="section" id="goal">
+    <h2>Goal & Objective</h2>
+    <ul>
+        <li><strong>Goal:</strong> Develop a comprehensive understanding of data science and AI concepts and identify the best models to fit various business situations.</li>
+        <li><strong>Objective:</strong> Develop the Technical Solution for the selected project in Capstone Project 1.</li>
+    </ul>
+</div>
+        <div class="section" id="point1">
+    <h2>Point 1: Develop the AI solution for the project idea selected in Capstone Project 1</h2>
+    <div class="summary"><strong>Rubric:</strong> AI Solution Roadmap & Project Plan – Clear, detailed roadmap with well-structured phases; includes a high-level project plan with key milestones, deliverables, and risk analysis.</div>
+            <h3>1.1 Project Phases, Milestones & Deliverables</h3>
+            <table>
+                <tr><th>Phase</th><th>Description</th><th>Key Milestones</th><th>Deliverables</th></tr>
+                <tr><td>Problem Understanding</td><td>Define business objectives, success criteria, and stakeholders.</td><td>Project Charter finalized</td><td>Problem Statement, Requirements Doc</td></tr>
+                <tr><td>Data Acquisition & EDA</td><td>Collect, clean, and explore datasets (RAVDESS, TESS, Kaggle, etc.).</td><td>Data sources validated, EDA complete</td><td>Data Report, EDA Notebook</td></tr>
+                <tr><td>Data Preprocessing</td><td>Clean, normalize, and extract features from audio data.</td><td>Features extracted, data ready for modeling</td><td>Preprocessed Data, Feature Scripts</td></tr>
+                <tr><td>Model Development</td><td>Train baseline (RandomForest/SVM) and advanced (CNN, LSTM, CRNN) models.</td><td>Baseline and deep models trained</td><td>Model Training Notebooks, Model Files</td></tr>
+                <tr><td>Evaluation & Validation</td><td>Assess model performance with metrics and cross-validation.</td><td>Best model selected, metrics reported</td><td>Evaluation Report, Confusion Matrix</td></tr>
+                <tr><td>MVP Development</td><td>Build MVP web app for demo (Streamlit/Gradio UI, Flask/FastAPI backend).</td><td>MVP functional, UI tested</td><td>MVP Prototype, UI/UX Mockups, Demo App</td></tr>
+                <tr><td>Deployment Planning</td><td>Prepare for production deployment (cloud/containerization).</td><td>Deployment plan, integration tested</td><td>Deployment Plan, Integration Docs</td></tr>
+                <tr><td>Monitoring & Feedback</td><td>Set up monitoring, logging, and feedback loop for continuous improvement.</td><td>Monitoring in place, feedback collected</td><td>Monitoring Plan, Feedback Mechanism</td></tr>
+            </table>
+            <h3>1.2 High-Level Project Plan</h3>
+            <table>
+                <tr><th>Week</th><th>Activities</th></tr>
+                <tr><td>1</td><td>Problem Understanding, Stakeholder Alignment</td></tr>
+                <tr><td>2-3</td><td>Data Acquisition, EDA, Preprocessing</td></tr>
+                <tr><td>4-5</td><td>Model Development, Evaluation</td></tr>
+                <tr><td>6</td><td>MVP Development, Testing</td></tr>
+                <tr><td>7</td><td>Deployment Planning, Integration</td></tr>
+                <tr><td>8</td><td>Monitoring Setup, Feedback Collection, Final Review</td></tr>
+            </table>
+            <h3>1.3 Key Milestones & Deliverables</h3>
+            <ul>
+                <li><strong>Project Charter</strong> (Week 1)</li>
+                <li><strong>Data & EDA Report</strong> (Week 3)</li>
+                <li><strong>Feature Extraction Scripts</strong> (Week 3)</li>
+                <li><strong>Model Training Notebooks & Files</strong> (Week 5)</li>
+                <li><strong>Evaluation Report</strong> (Week 5)</li>
+                <li><strong>MVP Demo App & Mockups</strong> (Week 6)</li>
+                <li><strong>Deployment Plan</strong> (Week 7)</li>
+                <li><strong>Monitoring & Feedback Plan</strong> (Week 8)</li>
+            </ul>
+            <h3>1.4 Risk Analysis & Mitigation</h3>
+            <table>
+                <tr><th>Risk</th><th>Impact</th><th>Mitigation Strategy</th></tr>
+                <tr><td>Data Quality Issues</td><td>High</td><td>Rigorous cleaning, augmentation, validation</td></tr>
+                <tr><td>Model Overfitting</td><td>Medium</td><td>Cross-validation, regularization, early stopping</td></tr>
+                <tr><td>Integration Complexity</td><td>Medium</td><td>Modular, API-first design, containerization</td></tr>
+                <tr><td>Resource Constraints</td><td>Low</td><td>Use cloud compute, optimize code, parallelization</td></tr>
+                <tr><td>Deployment Delays</td><td>Medium</td><td>Early planning, CI/CD pipelines, automation</td></tr>
+                <tr><td>Feedback Utilization</td><td>Medium</td><td>Build feedback loop into MVP and production</td></tr>
+            </table>
+            <div class="summary">
+                <strong>Summary:</strong> This roadmap ensures a systematic, milestone-driven approach with clear deliverables and proactive risk mitigation, fully meeting the rubric requirements.
+            </div>
+        </div>
+ 
+<div class="section" id="point2">
+    <h2>Point 2: State the aspects of AI that will be applied to the solution</h2>
+    <div class="summary"><strong>Rubric:</strong> AI Aspects & Algorithm – Thorough explanation of AI techniques; strong justification for the chosen AI approach; clear data collection strategy; well-researched algorithms with justification.</div>
+    <h3>AI Techniques & Justification</h3>
+    <ul>
+        <li>Feature extraction (MFCC, Chroma, Spectral Contrast) for audio signals</li>
+        <li>Classical ML models (RandomForest, SVM) for baseline</li>
+        <li>Deep learning models (CNN, CRNN, Transformer) for advanced performance</li>
+        <li>Justification: Deep models capture temporal and spectral patterns; classical models provide interpretability and quick baseline</li>
+    </ul>
+    <h3>Data Collection Strategy</h3>
+    <ul>
+        <li>Datasets: RAVDESS, TESS, Kaggle, etc.</li>
+        <li>Download and extraction scripts included (see Data Used Reference)</li>
+    </ul>
+    <h3>Algorithm Selection & Research</h3>
+    <ul>
+        <li>Algorithm choice based on literature and benchmarking on SER tasks</li>
+        <li>Justification for each model is included in the Advanced Addenda</li>
+    </ul>
+</div>
+<div class="section" id="point3">
+    <h2>Point 3: State other technologies required to complete the solution</h2>
+    <div class="summary"><strong>Rubric:</strong> Other Technologies & Infrastructure – Clearly states required infrastructure, acquisition strategy, build vs. buy decision, integration plan, and team structure; strong justifications.</div>
+    <ul>
+        <li><strong>Infrastructure:</strong> Local/cloud compute, Streamlit/Gradio for UI, Flask/FastAPI for backend, Keras/TensorFlow for DL models, joblib for ML models, CSV for feedback logging</li>
+        <li><strong>Acquisition Strategy:</strong> Use open datasets, open-source libraries, and cloud resources as needed</li>
+        <li><strong>Build vs. Buy:</strong> Build custom feature extraction and model training; use existing frameworks for deployment and UI</li>
+        <li><strong>Integration Plan:</strong> Modular API-first design; UI interacts with backend via REST API; models served as microservices</li>
+        <li><strong>Team Structure:</strong> Data scientist (modeling), ML engineer (deployment), UI developer (frontend), project manager</li>
+    </ul>
+
+    <h3>Expected Output</h3>
+    <div class="summary" style="background:#f5f7fa; border-left:4px solid #2980b9;">
+        Clearly states required infrastructure, acquisition strategy, build vs. buy decision, integration plan, and team structure; strong justifications.
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Technology/Approach</th>
+                <th>Justification &amp; Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Compute</strong></td>
+                <td>Google Colab, AWS EC2 (GPU), Local Workstation</td>
+                <td>Enables scalable, efficient model training; GPU instances speed up deep learning; local for prototyping.</td>
+            </tr>
+            <tr>
+                <td><strong>Storage</strong></td>
+                <td>Google Drive, AWS S3, Local Disk</td>
+                <td>Handles large datasets, model checkpoints, and logs; cloud storage for collaboration and backup.</td>
+            </tr>
+            <tr>
+                <td><strong>Backend</strong></td>
+                <td>Flask, FastAPI</td>
+                <td>Lightweight, scalable REST APIs for model serving and integration with frontend.</td>
+            </tr>
+            <tr>
+                <td><strong>Frontend</strong></td>
+                <td>Streamlit, Gradio</td>
+                <td>Rapid UI prototyping and deployment; enables interactive user feedback and visualization.</td>
+            </tr>
+            <tr>
+                <td><strong>Containerization</strong></td>
+                <td>Docker</td>
+                <td>Ensures portability, reproducibility, and easy deployment across environments.</td>
+            </tr>
+            <tr>
+                <td><strong>Monitoring/Logging</strong></td>
+                <td>MLflow, Custom Logging</td>
+                <td>Tracks experiments, model versions, and system health for continuous improvement.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <strong>Acquisition Strategy:</strong>
+    <ul>
+        <li>Leverage open-source tools and cloud credits for cost efficiency.</li>
+        <li>Use cloud providers (AWS, GCP) for scalable compute/storage; local resources for development/testing.</li>
+    </ul>
+
+    <strong>Build vs. Buy Decision:</strong>
+    <ul>
+        <li>Build custom backend and UI for flexibility and tailored user experience.</li>
+        <li>Use pre-built cloud services (e.g., AWS S3, MLflow) where integration is seamless and cost-effective.</li>
+    </ul>
+
+    <strong>Integration Plan:</strong>
+    <ul>
+        <li>Modular, API-first design for easy integration between frontend, backend, and ML components.</li>
+        <li>Containerize all services for smooth deployment and scaling.</li>
+        <li>Use CI/CD pipelines for automated testing and deployment.</li>
+    </ul>
+
+    <strong>Team Structure:</strong>
+    <ul>
+        <li>Data Scientist: Model development, feature engineering, evaluation.</li>
+        <li>ML Engineer: Model deployment, MLOps, API development.</li>
+        <li>UI/UX Designer: Frontend design, user experience.</li>
+        <li>Project Manager: Coordination, timelines, risk management.</li>
+    </ul>
+
+    <strong>Justification:</strong>
+    <div style="margin:10px 0 0 0;">
+        Each technology and approach is chosen for scalability, maintainability, and cost-effectiveness, ensuring the solution is robust and production-ready.
+    </div>
+</div>
+<div class="section" id="point4">
+    <h2>Point 4: Provide a visualisation of the solution</h2>
+    <div class="summary"><strong>Rubric:</strong> Solution visualisation (Actors, Diagrams, State transitions) – Detailed visualisation with clearly defined actors, their roles, activity diagrams, and critical state transitions; diagrams are well-structured.</div>
+    <!-- (Visualisation content remains here. MVP content is moved below.) -->
+    <div class="section" id="dataref">
+        <h2>Data Used Reference</h2>
+                <h3>Actors and Their Roles</h3>
+                <table>
+                    <tr>
+                        <th>Actor</th>
+                        <th>Role &amp; Responsibility</th>
+                    </tr>
+                    <tr>
+                        <td>End User</td>
+                        <td>Uploads audio samples, views predictions, and optionally provides feedback.</td>
+                    </tr>
+                    <tr>
+                        <td>Web Interface</td>
+                        <td>Provides a user-friendly platform for audio upload, displays results, and collects feedback.</td>
+                    </tr>
+                    <tr>
+                        <td>Backend/API</td>
+                        <td>Receives audio data, orchestrates workflow, handles requests, and manages system logic.</td>
+                    </tr>
+                    <tr>
+                        <td>Preprocessing</td>
+                        <td>Cleans and normalizes audio input for consistent feature extraction.</td>
+                    </tr>
+                    <tr>
+                        <td>Feature Extraction</td>
+                        <td>Converts processed audio into features suitable for ML/DL models.</td>
+                    </tr>
+                    <tr>
+                        <td>ML/DL Model</td>
+                        <td>Predicts emotion labels from extracted features.</td>
+                    </tr>
+                    <tr>
+                        <td>Prediction UI</td>
+                        <td>Presents prediction results and explanations to the user.</td>
+                    </tr>
+                </table>
+            
+                <h3>System Flow Diagram</h3>
+                <div class="diagram" style="white-space: pre; font-family: monospace;">
+            +-----------+       +----------------+       +-------------------+
+            |  End User | ----> |  Web Interface | ----> |   Backend (API)   |
+            +-----------+       +----------------+       +-------------------+
+                                                         |                   |
+                                                         v                   |
+                                              +-------------------+          |
+                                              |  Preprocessing    |          |
+                                              +-------------------+          |
+                                                         |                   |
+                                                         v                   |
+                                              +-------------------+          |
+                                              | Feature Extraction|          |
+                                              +-------------------+          |
+                                                         |                   |
+                                                         v                   |
+                                              +-------------------+          |
+                                              |   ML/DL Model     | <--------+
+                                              +-------------------+
+                                                         |
+                                                         v
+                                               +-----------------+
+                                               |  Prediction UI  |
+                                               +-----------------+
+                </div>
+            
+                <h3>State Transition Diagram</h3>
+                <div class="diagram" style="white-space: pre; font-family: monospace;">
+            [Idle] → [Uploading] → [Processing] → [Predicting] → [Output] → [Idle]
+                </div>
+                <ul>
+                    <li><strong>Idle:</strong> Waiting for user input.</li>
+                    <li><strong>Uploading:</strong> User uploads an audio file.</li>
+                    <li><strong>Processing:</strong> Audio is preprocessed and features are extracted.</li>
+                    <li><strong>Predicting:</strong> Model predicts emotion.</li>
+                    <li><strong>Output:</strong> Prediction is shown to user; feedback can be collected.</li>
+                </ul>
+            
+                <h3>Activity Diagram</h3>
+                <div class="diagram" style="white-space: pre; font-family: monospace;">
+            User Uploads Audio
+                    |
+                    v
+            System Preprocesses Audio
+                    |
+                    v
+            Feature Extraction
+                    |
+                    v
+            Model Inference
+                    |
+                    v
+            Show Prediction to User
+                    |
+                    v
+            Collect Feedback (Optional)
+                </div>
+            
+                <h3>Sequence Diagram</h3>
+                <div class="diagram" style="white-space: pre; font-family: monospace;">
+            User         Web UI         Backend/API        Model
+             |              |                |               |
+             |--Upload----->|                |               |
+             |              |--Send Audio--->|               |
+             |              |                |--Preprocess-->|
+             |              |                |--Extract Feat->|
+             |              |                |--Predict------>|
+             |              |                |<--Result-------|
+             |<--Show Result|                |               |
+             |--Feedback--->|                |               |
+                </div>
+            
+                <h3>Deployment Diagram</h3>
+                <div class="diagram" style="white-space: pre; font-family: monospace;">
+            +-----------------------+
+            |    End User Device    |
+            |  (Browser/Streamlit)  |
+            +----------+------------+
+                       |
+                       v
+            +-----------------------+
+            |   Web Server/API      |
+            |  (Flask/FastAPI)      |
+            +----------+------------+
+                       |
+                       v
+            +-----------------------+
+            |   Model Server        |
+            | (Sklearn/Keras Model) |
+            +----------+------------+
+                       |
+                       v
+            +-----------------------+
+            |    Data Storage       |
+            | (Feedback CSV, Logs)  |
+            +-----------------------+
+                </div>
+            
+                <h3>Data Flow Diagram</h3>
+                <div class="diagram" style="white-space: pre; font-family: monospace;">
+            [Audio File] → [Preprocessing] → [Feature Extraction] → [Model Prediction] → [Result]
+                </div>
+            </div>
+    
+</div>
+
+<div class="section" id="point5">
+    <h2>Point 5: Create a Minimum Viable Product (MVP) on paper</h2>
+    <div class="summary"><strong>Rubric:</strong> Minimum Viable Product (MVP) Design : Expected Output : Well-structured MVP with detailed UI, workflows, and backend interactions; clear and practical implementation plan.</div>
+    <h3>MVP UI Wireframe (ASCII)</h3>
+    <div class="diagram">
++-------------------------------------------------------+
+|      Speech Emotion Recognition - MVP                 |
++-------------------------------------------------------+
+| [Upload Audio] [Predict Emotion]                      |
++-------------------------------------------------------+
+| [Audio Playback]                                      |
+| [Prediction Result: <Emotion>]                        |
+| [Feedback: 👍 👎  Text Box]                            |
++-------------------------------------------------------+
+| Sidebar:                                             |
+|  - Project Info                                      |
+|  - Instructions                                      |
+|  - About                                             |
++-------------------------------------------------------+
+    </div>
+    <h3>Workflow Overview</h3>
+    <ol>
+        <li>User uploads audio file via the web UI.</li>
+        <li>Backend receives file and performs preprocessing (e.g., noise reduction, normalization).</li>
+        <li>Features are extracted from the processed audio.</li>
+        <li>Model predicts emotion from features.</li>
+        <li>Result is displayed to the user in the UI.</li>
+        <li>User provides feedback (optional), which is logged for future improvements.</li>
+    </ol>
+    <h3>Backend &amp; UI Interactions</h3>
+    <ul>
+        <li><strong>Frontend (Streamlit/Gradio):</strong> Handles file upload, displays results, collects feedback.</li>
+        <li><strong>Backend (Flask/FastAPI):</strong> Accepts audio, preprocesses, extracts features, loads model, returns prediction.</li>
+        <li><strong>Data Storage:</strong> Logs feedback and prediction results for analysis.</li>
+    </ul>
+    <h3>MVP Implementation Plan</h3>
+    <ul>
+        <li><strong>UI:</strong> Build with Streamlit or Gradio for rapid prototyping.</li>
+        <li><strong>Backend:</strong> Use Flask or FastAPI to serve the model and handle requests.</li>
+        <li><strong>Model:</strong> Start with a pre-trained RandomForest or simple CNN; save as <code>model.pkl</code> or Keras <code>.h5</code>.</li>
+        <li><strong>Feedback Logging:</strong> Store feedback in a CSV file (<code>feedback_log.csv</code>).</li>
+        <li><strong>Deployment:</strong> Run locally or on cloud (e.g., Streamlit Cloud, Heroku).</li>
+    </ul>
+    <h3>Example MVP Implementation (Python/Streamlit)</h3>
+    <pre><code>import streamlit as st
+import numpy as np
+import librosa
+import joblib
+import os
+import pandas as pd
+
+st.title("Speech Emotion Recognition - MVP")
+
+uploaded_file = st.file_uploader("Upload an audio file", type=["wav", "mp3"])
+
+@st.cache_resource
+def load_model():
+    if os.path.exists("model.pkl"):
+        return joblib.load("model.pkl")
+    else:
+        return None
+
+model = load_model()
+FEEDBACK_FILE = "feedback_log.csv"
+
+def extract_features(file):
+    y, sr = librosa.load(file, sr=None)
+    mfccs = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40).T, axis=0)
+    chroma = np.mean(librosa.feature.chroma_stft(y=y, sr=sr).T, axis=0)
+    contrast = np.mean(librosa.feature.spectral_contrast(y=y, sr=sr).T, axis=0)
+    features = np.hstack([mfccs, chroma, contrast])
+    return features.reshape(1, -1)
+
+if uploaded_file is not None:
+    st.audio(uploaded_file)
+    features = extract_features(uploaded_file)
+    if model is not None:
+        prediction = model.predict(features)
+        st.write(f"Prediction: {prediction[0]}")
+        feedback = st.radio("Was the prediction correct?", ("👍", "👎"))
+        comment = st.text_input("Additional feedback:")
+        if st.button("Submit Feedback"):
+            df = pd.DataFrame([[uploaded_file.name, prediction[0], feedback, comment]],
+                              columns=["file", "prediction", "feedback", "comment"])
+            if os.path.exists(FEEDBACK_FILE):
+                df.to_csv(FEEDBACK_FILE, mode='a', header=False, index=False)
+            else:
+                df.to_csv(FEEDBACK_FILE, mode='w', header=True, index=False)
+            st.success("Feedback submitted!")
+    else:
+        st.error("Model not found. Please train and save a model as model.pkl.")</code></pre>
+    <h3>Implementation Timeline</h3>
+    <table>
+        <tr><th>Phase</th><th>Tasks</th><th>Timeline</th></tr>
+        <tr><td>UI Design</td><td>Wireframe, build Streamlit/Gradio UI</td><td>1 week</td></tr>
+        <tr><td>Backend Setup</td><td>Flask/FastAPI API, model integration</td><td>1 week</td></tr>
+        <tr><td>Model Integration</td><td>Train/save model, connect to backend</td><td>1 week</td></tr>
+        <tr><td>Feedback Logging</td><td>CSV logging, UI feedback form</td><td>2 days</td></tr>
+        <tr><td>Testing &amp; Deploy</td><td>Local/cloud deploy, user testing</td><td>1 week</td></tr>
+    </table>
+    <div class="diagram">
+[Home] -> [Upload Audio] -> [Play Audio] -> [Predict] -> [Show Result]
+                                                    |
+                                                    v
+                                           [Feedback Form]
+                                                    |
+                                                    v
+                                           [Download Feedback]
+    </div>
+</div>
+
+
+ 
+        <div class="section" id="addenda">
+    <h2>Advanced Addenda</h2>
+            <h3>Deep Learning Architectures</h3>
+            <ul>
+                <li><strong>CRNN (Convolutional Recurrent Neural Network):</strong> Combines CNN layers for feature extraction from spectrograms with RNN layers for temporal modeling.</li>
+                <li><strong>Attention/Transformer:</strong> Uses self-attention to model long-range dependencies in audio features for improved emotion recognition.</li>
+            </ul>
+        
+            <h3>Sample CRNN Model (Keras)</h3>
+            <pre><code>from tensorflow.keras.models import Sequential
+        from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dropout, Flatten, LSTM, Dense, TimeDistributed
+        
+        model = Sequential([
+            Conv2D(32, (3,3), activation='relu', input_shape=(128, 128, 1)),
+            MaxPooling2D((2,2)),
+            Dropout(0.3),
+            Conv2D(64, (3,3), activation='relu'),
+            MaxPooling2D((2,2)),
+            Dropout(0.3),
+            TimeDistributed(Flatten()),
+            LSTM(64, return_sequences=False),
+            Dense(8, activation='softmax')
+        ])
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+            </code></pre>
+        
+            <h3>Sample Transformer Model (Keras)</h3>
+            <pre><code>from tensorflow.keras import layers, models
+        
+        inputs = layers.Input(shape=(None, 128))
+        x = layers.MultiHeadAttention(num_heads=4, key_dim=32)(inputs, inputs)
+        x = layers.GlobalAveragePooling1D()(x)
+        outputs = layers.Dense(8, activation='softmax')(x)
+        model = models.Model(inputs, outputs)
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+            </code></pre>
+        
+            <h3>Batch Feature Extraction Script</h3>
+            <pre><code>import librosa
+        import numpy as np
+        import os
+        import pandas as pd
+        
+        def extract_features(file_path):
+            y, sr = librosa.load(file_path, sr=None)
+            mfccs = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40).T, axis=0)
+            chroma = np.mean(librosa.feature.chroma_stft(y=y, sr=sr).T, axis=0)
+            contrast = np.mean(librosa.feature.spectral_contrast(y=y, sr=sr).T, axis=0)
+            return np.hstack([mfccs, chroma, contrast])
+        
+        data = []
+        for fname in os.listdir('audio_dir'):
+            if fname.endswith('.wav'):
+                features = extract_features(os.path.join('audio_dir', fname))
+                data.append([fname] + features.tolist())
+        
+        df = pd.DataFrame(data)
+        df.to_csv('features.csv', index=False)
+            </code></pre>
+        
+            <h3>Spectrogram Generation Script</h3>
+            <pre><code>import librosa
+        import matplotlib.pyplot as plt
+        import numpy as np
+        
+        y, sr = librosa.load('audio.wav', sr=None)
+        S = librosa.feature.melspectrogram(y, sr=sr, n_mels=128)
+        S_DB = librosa.power_to_db(S, ref=np.max)
+        
+        plt.figure(figsize=(10, 4))
+        librosa.display.specshow(S_DB, sr=sr, x_axis='time', y_axis='mel')
+        plt.colorbar(format='%+2.0f dB')
+        plt.title('Mel-frequency spectrogram')
+        plt.tight_layout()
+        plt.savefig('spectrogram.png')
+            </code></pre>
+        
+            <h3>Example Data Format</h3>
+            <pre><code>file,label,mfcc1,mfcc2,...,chroma1,...,contrast1,...
+        audio1.wav,happy,0.12,0.34,...,0.56,...,0.78,...
+        audio2.wav,sad,0.23,0.41,...,0.31,...,0.65,...
+            </code></pre>
+        
+            <h3>Sample Notebook Outline</h3>
+            <ol>
+                <li>Import libraries and load data</li>
+                <li>Visualize audio and spectrograms</li>
+                <li>Extract features and preprocess data</li>
+                <li>Build and train ML/DL models (RandomForest, CRNN, Transformer)</li>
+                <li>Evaluate models and visualize results</li>
+                <li>Deploy best model for inference</li>
+                <li>Collect and analyze user feedback</li>
+            </ol>
+        </div>
+    </div>
